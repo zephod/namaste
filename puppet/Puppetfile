@@ -1,0 +1,7 @@
+# Configuration for librarian-puppet lists the modules we depend upon.
+# 
+forge "http://forge.puppetlabs.com"
+
+mod "puppetlabs/apache"
+mod "puppetlabs/mysql"
+
