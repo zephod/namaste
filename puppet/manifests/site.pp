@@ -1,15 +1,17 @@
 Exec {
-  path => '/bin:/usr/sbin:/usr/bin',
+  path => "/bin:/usr/sbin:/usr/bin",
 }
-file {'/home/zephod':
-  ensure => directory,
+group {"zephod":
+  ensure => present,
 }
-user { 'zephod':
-  require => File['/home/zephod'],
-  ensure  => present,
-  shell   => "/bin/bash",
-  home    => "/home/zephod",
-  groups  => "sudo",
+user { "zephod":
+  require    => Group["zephod"],
+  ensure     => present,
+  managehome => true,
+  gid        => "zephod",
+  shell      => "/bin/bash",
+  home       => "/home/zephod",
+  groups     => "sudo",
 }
 
 class {  'apache':
