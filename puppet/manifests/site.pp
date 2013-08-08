@@ -6,6 +6,7 @@ user { 'zephod':
   shell  => "/bin/bash",
   home   => "/home/zephod",
   groups => "sudo",
+
 }
 
 
@@ -14,9 +15,11 @@ class {  'apache':
   mpm_module => 'prefork',
 }
 apache::vhost { 'localhost':
-  port     => '80',
-  docroot  => '/var/wordpress',
-  override => 'All',
+  port          => '80',
+  docroot       => '/var/wordpress',
+  override      => 'All',
+  docroot_owner => 'www-data',
+  docroot_group => 'www-data',
 }
 class { 'apache::mod::php': }
 class { 'apache::mod::rewrite': }
