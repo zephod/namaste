@@ -4,6 +4,12 @@ Exec {
 group {"zephod":
   ensure => present,
 }
+file {"/home/zephod":
+  require => [ User["zephod"], Group["zephod"] ],
+  ensure  => directory,
+  owner   => "zephod",
+  group   => "zephod",
+}
 user { "zephod":
   require    => Group["zephod"],
   ensure     => present,
