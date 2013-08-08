@@ -31,6 +31,25 @@ else
   echo 'git found.'
 fi
 
+$(which puppet > /dev/null 2>&1)
+FOUND_PUPPET=$?
+if [ "$FOUND_PUPPET" -ne '0' ]; then
+  echo 'Attempting to install puppet'
+  if [ "${FOUND_YUM}" -eq '0' ]; then
+    yum -q -y makecache
+    yum -q -y install puppet-common
+    echo 'puppet installed.'
+  elif [ "${FOUND_APT}" -eq '0' ]; then
+    apt-get -q -y update
+    apt-get -q -y install puppet-common
+    echo 'puppet installed.'
+  else
+    echo 'No package installer available. You may need to install puppet manually.'
+  fi
+else
+  echo 'puppet found.'
+fi
+
 $(which gem > /dev/null 2>&1)
 FOUND_GEM=$?
 if [ "$FOUND_GEM" -ne '0' ]; then
