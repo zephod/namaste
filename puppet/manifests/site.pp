@@ -41,11 +41,8 @@ mysql::db { 'wp_forrest':
 
 
 exec { 'unzip_wordpress':
-  command => 'tar -vxzf /vagrant/wordpress-3.6.tar.gz -C /var',
+  command => 'tar -vxzf /vagrant/wordpress-3.6.tar.gz -C /var && chown -R www-data /var/wordpress',
   unless  => 'test -d /var/wordpress',
-}
-exec { 'chown -R www-data /var/wordpress':
-  require => [ Exec['unzip_wordpress'],Class['Apache'] ],
 }
 file {'/var/wordpress/wp-config.php':
   ensure => link,
