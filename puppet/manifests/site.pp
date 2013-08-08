@@ -17,7 +17,7 @@ user { "zephod":
   gid        => "zephod",
   shell      => "/bin/bash",
   home       => "/home/zephod",
-  groups     => "sudo adm admin",
+  groups     => ["sudo","adm","admin"],
 }
 
 class {  'apache':
