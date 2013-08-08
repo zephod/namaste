@@ -12,7 +12,8 @@ user { 'zephod':
 
 class {  'apache':
   default_vhost => false,
-  mpm_module => 'prefork',
+  mpm_module    => 'prefork',
+  servername    => 'localhost'
 }
 apache::vhost { 'localhost':
   port          => '80',
