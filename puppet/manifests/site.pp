@@ -1,14 +1,16 @@
 Exec {
   path => '/bin:/usr/sbin:/usr/bin',
 }
-user { 'zephod':
-  ensure => present,
-  shell  => "/bin/bash",
-  home   => "/home/zephod",
-  groups => "sudo",
-
+file {'/home/zephod':
+  ensure => directory,
 }
-
+user { 'zephod':
+  require => File['/home/zephod'],
+  ensure  => present,
+  shell   => "/bin/bash",
+  home    => "/home/zephod",
+  groups  => "sudo",
+}
 
 class {  'apache':
   default_vhost => false,
