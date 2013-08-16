@@ -12,6 +12,7 @@
       get_template_part('templates/header');
     }
   ?>
+<div id="big-img">&nbsp;</div>
 
   <div class="wrap container" role="document">
     <div class="content row">

@@ -1,8 +1,12 @@
-<header class="banner navbar navbar-static-top" role="banner">
+<header class="banner" role="banner">
   <div class="container">
     <a class="navbar-brand" href="<?php echo home_url(); ?>/">
       <?php bloginfo('name'); ?>
     </a>
+  </div>
+</header>
+<div class="banner navbar navbar-static-top" role="banner">
+  <div class="container">
     <button data-target=".nav-main" data-toggle="collapse" type="button" class="navbar-toggle">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
@@ -16,4 +20,4 @@
       ?>
     </nav>
   </div>
-</header>
+</div>
