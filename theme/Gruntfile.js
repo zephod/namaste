@@ -4,6 +4,12 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    copy: {
+      favicon: {
+        src: 'assets/RAW/img/favicon.ico',
+        dest: 'assets/img/favicon.ico',
+      }
+    },
     concat: {
       options: {
         banner: '/*! VENDOR JS */\n'
@@ -80,6 +86,7 @@ module.exports = function(grunt) {
     },
   });
 
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
@@ -89,5 +96,5 @@ module.exports = function(grunt) {
   // Default task(s).
   grunt.registerTask('styles', ['concat:vendor_styles','less:app_styles']);
   grunt.registerTask('scripts', ['concat:vendor_scripts','uglify:vendor_scripts','uglify:app_scripts']);
-  grunt.registerTask('default', ['styles','scripts','imagemin']);
+  grunt.registerTask('default', ['copy','styles','scripts','imagemin']);
 };
