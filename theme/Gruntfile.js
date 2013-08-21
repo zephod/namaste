@@ -5,8 +5,12 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     copy: {
+      jquery: {
+        src: 'src/js/jquery-1.10.2.min.js',
+        dest: 'assets/js/jquery-1.10.2.min.js',
+      },
       favicon: {
-        src: 'assets/RAW/img/favicon.ico',
+        src: 'src/img/favicon.ico',
         dest: 'assets/img/favicon.ico',
       }
     },
@@ -16,16 +20,16 @@ module.exports = function(grunt) {
       },
       vendor_scripts: {
         src: [ /* Order of resources is important */
-          'assets/RAW/js/plugins.js',
-          'assets/RAW/js/vendor/jquery.backstretch.min.js',
-          'assets/RAW/js/modernizr-2.6.2.min.js',
+          'src/js/plugins.js',
+          'src/js/vendor/jquery.backstretch.min.js',
+          'src/js/modernizr-2.6.2.min.js',
         ],
         dest: 'assets/js/vendor.js'
       },
       vendor_styles: {
         src: [  /* Order of resources is important. */
-          'assets/RAW/style/bootstrap.css',
-          'assets/RAW/style/editor-style.css',
+          'src/style/bootstrap.css',
+          'src/style/editor-style.css',
         ],
         dest: 'assets/css/vendor.css'
       }
@@ -39,7 +43,7 @@ module.exports = function(grunt) {
         dest: 'assets/js/vendor.min.js'
       },
       app_scripts: {
-        src: 'assets/RAW/js/forrest.js',
+        src: 'src/js/forrest.js',
         dest: 'assets/js/forrest.min.js'
       }
     },
@@ -49,7 +53,7 @@ module.exports = function(grunt) {
         yuicompress: true
       },
       app_styles: {
-        src: 'assets/RAW/style/forrest.less',
+        src: 'src/style/forrest.less',
         dest: 'assets/css/forrest.min.css'
       }
     },
@@ -62,13 +66,13 @@ module.exports = function(grunt) {
           {
             expand: true,
             src: '*.jpg',
-            cwd: 'assets/RAW/img/',
+            cwd: 'src/img/',
             dest: 'assets/img/'
           },
           {
             expand: true,
             src: '*.png',
-            cwd: 'assets/RAW/img/',
+            cwd: 'src/img/',
             dest: 'assets/img/'
           }
         ]
@@ -76,11 +80,11 @@ module.exports = function(grunt) {
     },
     watch: {
       app_scripts: {
-        files: 'assets/RAW/js/forrest.js',
+        files: 'src/js/forrest.js',
         tasks: 'uglify:app_scripts'
       },
       app_styles: {
-        files: 'assets/RAW/style/forrest.less',
+        files: 'src/style/forrest.less',
         tasks: 'less:app_styles'
       }
     },
