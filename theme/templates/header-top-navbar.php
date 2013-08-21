@@ -1,3 +1,4 @@
+<div class="pre-header"></div>
 <header class="banner" role="banner">
   <div class="container">
     <a class="navbar-brand" href="<?php echo home_url(); ?>/">
