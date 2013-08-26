@@ -1,5 +1,16 @@
 <div class="pre-header"></div>
 <header class="banner" role="banner">
+  <div class="hidden-xs forrest-social-buttons">
+    <a href="#" class="btn btn-info pull-left">
+      <i class="icon-large icon-twitter"></i>
+    </a>
+    <a href="#" class="btn btn-info pull-left">
+      <i class="icon-large icon-facebook"></i>
+    </a>
+    <a href="#" type="button" class="btn btn-info pull-left">
+      <i class="icon-large icon-envelope"></i>
+    </a>
+  </div>
   <div class="container">
     <a class="navbar-brand" href="<?php echo home_url(); ?>/">
       <img src="/build/img/header.png" style="height: 80px;" alt="Forrest Yoga London" />
