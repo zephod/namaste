@@ -10,7 +10,7 @@
  * 1. jquery-1.10.2.min.js via Google CDN
  */
 function roots_scripts() {
-  wp_enqueue_style('vendor', get_template_directory_uri() . '/build/css/vendor.css', false, null);
+  wp_enqueue_style('vendor', get_template_directory_uri() . '/build/css/vendor.min.css', false, null);
   wp_enqueue_style('forrest', get_template_directory_uri() . '/build/css/forrest.min.css', false, null);
 
   // jQuery is loaded using the same method from HTML5 Boilerplate:

@@ -8,7 +8,13 @@ module.exports = function(grunt) {
       jquery: {
         src: 'theme/src/js/jquery-1.10.2.min.js',
         dest: 'theme/build/js/jquery-1.10.2.min.js',
-      }
+      },
+      font: {
+        expand: true,
+        src: '*',
+        cwd: 'theme/src/font/',
+        dest: 'theme/build/font/'
+      },
     },
     concat: {
       options: {
@@ -22,13 +28,17 @@ module.exports = function(grunt) {
         ],
         dest: 'theme/build/js/vendor.js'
       },
-      vendor_styles: {
+    },
+    cssmin: {
+      options: { banner: '/*! VENDOR css */\n', },
+      vendor: {
         src: [  /* Order of resources is important. */
           'theme/src/style/bootstrap.css',
+          'theme/src/style/font-awesome.css',
           'theme/src/style/editor-style.css',
         ],
-        dest: 'theme/build/css/vendor.css'
-      }
+        dest: 'theme/build/css/vendor.min.css'
+      },
     },
     uglify: {
       options: {
@@ -102,11 +112,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task(s).
-  grunt.registerTask('styles', ['concat:vendor_styles','less:app_styles']);
+  grunt.registerTask('styles', ['cssmin:vendor','less:app_styles']);
   grunt.registerTask('scripts', ['copy:jquery','concat:vendor_scripts','uglify:vendor_scripts','uglify:app_scripts']);
-  grunt.registerTask('default', ['styles','scripts','imagemin']);
+  grunt.registerTask('default', ['styles','scripts','imagemin','copy:font']);
 };
