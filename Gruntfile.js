@@ -22,9 +22,9 @@ module.exports = function(grunt) {
       },
       vendor_scripts: {
         src: [ /* Order of resources is important */
-          'theme/src/js/plugins.js',
+          'theme/src/js/vendor/bootstrap.js',
           'theme/src/js/vendor/jquery.backstretch.min.js',
-          'theme/src/js/modernizr-2.6.2.min.js',
+          'theme/src/js/vendor/modernizr-2.6.2.min.js',
         ],
         dest: 'theme/build/js/vendor.js'
       },
