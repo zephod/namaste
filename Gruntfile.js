@@ -6,12 +6,8 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     copy: {
       jquery: {
-        src: 'src/js/jquery-1.10.2.min.js',
-        dest: 'assets/js/jquery-1.10.2.min.js',
-      },
-      favicon: {
-        src: 'src/img/favicon.ico',
-        dest: 'assets/img/favicon.ico',
+        src: 'theme/src/js/jquery-1.10.2.min.js',
+        dest: 'theme/build/js/jquery-1.10.2.min.js',
       }
     },
     concat: {
@@ -20,18 +16,18 @@ module.exports = function(grunt) {
       },
       vendor_scripts: {
         src: [ /* Order of resources is important */
-          'src/js/plugins.js',
-          'src/js/vendor/jquery.backstretch.min.js',
-          'src/js/modernizr-2.6.2.min.js',
+          'theme/src/js/plugins.js',
+          'theme/src/js/vendor/jquery.backstretch.min.js',
+          'theme/src/js/modernizr-2.6.2.min.js',
         ],
-        dest: 'assets/js/vendor.js'
+        dest: 'theme/build/js/vendor.js'
       },
       vendor_styles: {
         src: [  /* Order of resources is important. */
-          'src/style/bootstrap.css',
-          'src/style/editor-style.css',
+          'theme/src/style/bootstrap.css',
+          'theme/src/style/editor-style.css',
         ],
-        dest: 'assets/css/vendor.css'
+        dest: 'theme/build/css/vendor.css'
       }
     },
     uglify: {
@@ -39,12 +35,12 @@ module.exports = function(grunt) {
         banner: '/*! VENDOR JS UGLIFIED */\n'
       },
       vendor_scripts: {
-        src: 'assets/js/vendor.js',
-        dest: 'assets/js/vendor.min.js'
+        src: 'theme/build/js/vendor.js',
+        dest: 'theme/build/js/vendor.min.js'
       },
       app_scripts: {
-        src: 'src/js/forrest.js',
-        dest: 'assets/js/forrest.min.js'
+        src: 'theme/src/js/forrest.js',
+        dest: 'theme/build/js/forrest.min.js'
       }
     },
     less: {
@@ -53,8 +49,8 @@ module.exports = function(grunt) {
         yuicompress: true
       },
       app_styles: {
-        src: 'src/style/forrest.less',
-        dest: 'assets/css/forrest.min.css'
+        src: 'theme/src/style/forrest.less',
+        dest: 'theme/build/css/forrest.min.css'
       }
     },
     imagemin: {
@@ -66,25 +62,37 @@ module.exports = function(grunt) {
           {
             expand: true,
             src: '*.jpg',
-            cwd: 'src/img/',
-            dest: 'assets/img/'
+            cwd: 'media/src/',
+            dest: 'media/build/'
           },
           {
             expand: true,
             src: '*.png',
-            cwd: 'src/img/',
-            dest: 'assets/img/'
+            cwd: 'media/src/',
+            dest: 'media/build/'
+          },
+          {
+            expand: true,
+            src: '*.jpg',
+            cwd: 'theme/src/img/',
+            dest: 'theme/build/img/'
+          },
+          {
+            expand: true,
+            src: '*.png',
+            cwd: 'theme/src/img/',
+            dest: 'theme/build/img/'
           }
         ]
       },
     },
     watch: {
       app_scripts: {
-        files: 'src/js/forrest.js',
+        files: 'theme/src/js/forrest.js',
         tasks: 'uglify:app_scripts'
       },
       app_styles: {
-        files: 'src/style/forrest.less',
+        files: 'theme/src/style/forrest.less',
         tasks: 'less:app_styles'
       }
     },
@@ -99,6 +107,6 @@ module.exports = function(grunt) {
 
   // Default task(s).
   grunt.registerTask('styles', ['concat:vendor_styles','less:app_styles']);
-  grunt.registerTask('scripts', ['concat:vendor_scripts','uglify:vendor_scripts','uglify:app_scripts']);
-  grunt.registerTask('default', ['copy','styles','scripts','imagemin']);
+  grunt.registerTask('scripts', ['copy:jquery','concat:vendor_scripts','uglify:vendor_scripts','uglify:app_scripts']);
+  grunt.registerTask('default', ['styles','scripts','imagemin']);
 };
