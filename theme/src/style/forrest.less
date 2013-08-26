@@ -46,20 +46,38 @@ footer {
   margin-top: 10px;
 }
 header {
+  .container {
+    position: relative;
+  }
   .forrest-social-buttons {
-      float: right;
-      margin-right: 30px;
-      margin-top: 29px;
+      position: absolute;
+      right: 10px;
+      top: 0px;
       a {
-        margin-right: 2px;
-        width: 37px;
-        padding: 7px 0 6px 0;
+          display: block;
+          width: 27px;
+          margin-top: 3px;
+          padding: 3px 0 2px 0;
+      }
+      @media (min-width: 768px) {
+        top: 48px;
+        margin-top: -24px;
+        a {
+          padding: 7px 0 6px 0;
+          float: left;
+          margin-right: 2px;
+          width: 37px;
+          i { font-size: 18px;  line-height: 16px;}
+        }
       }
   }
   .navbar-brand {
     max-width: 300px;
     padding: 8px 0px;
   }
+}
+nav.navbar {
+  margin-bottom: 0px;
 }
 
 
