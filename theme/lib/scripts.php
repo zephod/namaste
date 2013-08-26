@@ -3,15 +3,15 @@
  * Enqueue scripts and stylesheets
  *
  * Enqueue stylesheets in the following order:
- * 1. /theme/assets/css/bootstrap.css
- * 2. /theme/assets/css/app.css
+ * 1. /theme/build/css/bootstrap.css
+ * 2. /theme/build/css/app.css
  *
  * Enqueue scripts in the following order:
  * 1. jquery-1.10.2.min.js via Google CDN
  */
 function roots_scripts() {
-  wp_enqueue_style('vendor', get_template_directory_uri() . '/assets/css/vendor.css', false, null);
-  wp_enqueue_style('forrest', get_template_directory_uri() . '/assets/css/forrest.min.css', false, null);
+  wp_enqueue_style('vendor', get_template_directory_uri() . '/build/css/vendor.css', false, null);
+  wp_enqueue_style('forrest', get_template_directory_uri() . '/build/css/forrest.min.css', false, null);
 
   // jQuery is loaded using the same method from HTML5 Boilerplate:
   // Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
@@ -26,8 +26,8 @@ function roots_scripts() {
     wp_enqueue_script('comment-reply');
   }
 
-  wp_register_script('vendor', get_template_directory_uri() . '/assets/js/vendor.min.js', false, null, false);
-  wp_register_script('forrest', get_template_directory_uri() . '/assets/js/forrest.min.js', false, null, false);
+  wp_register_script('vendor', get_template_directory_uri() . '/build/js/vendor.min.js', false, null, false);
+  wp_register_script('forrest', get_template_directory_uri() . '/build/js/forrest.min.js', false, null, false);
   wp_enqueue_script('jquery');
   wp_enqueue_script('vendor');
   wp_enqueue_script('forrest');
@@ -39,7 +39,7 @@ function roots_jquery_local_fallback($src, $handle) {
   static $add_jquery_fallback = false;
 
   if ($add_jquery_fallback) {
-    echo '<script>window.jQuery || document.write(\'<script src="' . get_template_directory_uri() . '/assets/js/vendor/jquery-1.10.2.min.js"><\/script>\')</script>' . "\n";
+    echo '<script>window.jQuery || document.write(\'<script src="' . get_template_directory_uri() . '/build/js/vendor/jquery-1.10.2.min.js"><\/script>\')</script>' . "\n";
     $add_jquery_fallback = false;
   }
 

@@ -5,9 +5,9 @@
  * Rewrites do not happen for multisite installations or child themes
  *
  * Rewrite:
- *   /wp-content/themes/themename/assets/css/ to /assets/css/
- *   /wp-content/themes/themename/assets/js/  to /assets/js/
- *   /wp-content/themes/themename/assets/img/ to /assets/img/
+ *   /wp-content/themes/themename/build/css/ to /build/css/
+ *   /wp-content/themes/themename/build/js/  to /build/js/
+ *   /wp-content/themes/themename/build/img/ to /build/img/
  *   /wp-content/plugins/                     to /plugins/
  *
  * If you aren't using Apache, alternate configuration settings can be found in the docs.
@@ -17,9 +17,9 @@
 function roots_add_rewrites($content) {
   global $wp_rewrite;
   $roots_new_non_wp_rules = array(
-    'assets/css/(.*)'      => THEME_PATH . '/assets/css/$1',
-    'assets/js/(.*)'       => THEME_PATH . '/assets/js/$1',
-    'assets/img/(.*)'      => THEME_PATH . '/assets/img/$1',
+    'build/css/(.*)'      => THEME_PATH . '/build/css/$1',
+    'build/js/(.*)'       => THEME_PATH . '/build/js/$1',
+    'build/img/(.*)'      => THEME_PATH . '/build/img/$1',
     'plugins/(.*)'         => RELATIVE_PLUGIN_PATH . '/$1'
   );
   $wp_rewrite->non_wp_rules = array_merge($wp_rewrite->non_wp_rules, $roots_new_non_wp_rules);

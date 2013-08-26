@@ -2,7 +2,7 @@
 <header class="banner" role="banner">
   <div class="container">
     <a class="navbar-brand" href="<?php echo home_url(); ?>/">
-      <img src="/assets/img/header.png" style="height: 80px;" alt="Forrest Yoga London" />
+      <img src="/build/img/header.png" style="height: 80px;" alt="Forrest Yoga London" />
     </a>
   </div>
 </header>
